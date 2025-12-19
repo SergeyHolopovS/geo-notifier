@@ -63,10 +63,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/log:/var/log/nginx
-      - ${NGINX_CERT_PATH}:/etc/letsencrypt/live/${DOMAIN}/fullchain.pem:ro
-      - ${NGINX_KEY_PATH}:/etc/letsencrypt/live/${DOMAIN}/privkey.pem:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
     depends_on:
       - service
     restart: always
