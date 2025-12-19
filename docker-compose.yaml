@@ -21,21 +21,13 @@ services:
       interval: 5s
       timeout: 5s
       retries: 3
-    #    healthcheck:
-    #      test: [ "CMD-SHELL", "pg_isready -d ${POSTGRES_DB:-admin}" ]
-    #      interval: ${HEALTH_CHECK_INTERVAL:-30}s
-    #      timeout: ${HEALTH_CHECK_TIMEOUT:-10}s
-    #      retries: ${HEALTH_CHECK_RETRIES:-3}
-    #      start_period: ${HEALTH_CHECK_START_PERIOD:-40}s
-    # networks:
-    #   - service
   service:
     container_name: ${CONTAINER_NAME:-service}
     build:
       context: ./
       dockerfile: Dockerfile
-    ports:
-      - "${APP_PORT:-8080}"
+    expose:
+      - "8080"
     depends_on:
       db:
         condition: service_healthy
@@ -51,8 +43,6 @@ services:
       SPRING_LOGGING_LEVEL_ROOT: ${SPRING_LOGGING_LEVEL_ROOT:-info}
     volumes:
       - client_data:/data
-    # networks:
-    #   - service
   redis:
     container_name: redis
     image: redis:5
@@ -67,15 +57,21 @@ services:
       start_period: ${HEALTH_CHECK_START_PERIOD:-40}s
     volumes:
       - redis_data:/data
-    # networks:
-    #   - service
-
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-protect
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/log:/var/log/nginx
+      - ${NGINX_CERT_PATH}:/etc/letsencrypt/live/${DOMAIN}/fullchain.pem:ro
+      - ${NGINX_KEY_PATH}:/etc/letsencrypt/live/${DOMAIN}/privkey.pem:ro
+    depends_on:
+      - service
+    restart: always
 
 volumes:
   pg_data:
   client_data:
   redis_data:
-
-# networks:
-#   service:
-#     driver: bridge

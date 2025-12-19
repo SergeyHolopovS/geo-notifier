@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Arrays;
 
@@ -46,6 +47,16 @@ public class GlobalExceptionHandler {
                 .builder()
                 .status(HttpStatus.BAD_REQUEST)
                 .message("Запрос невалиден")
+                .build();
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ErrorDto noResourceFound() {
+        return ErrorDto
+                .builder()
+                .status(HttpStatus.NOT_FOUND)
+                .message("Такого URL не существует")
                 .build();
     }
 

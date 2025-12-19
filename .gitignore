@@ -38,3 +38,5 @@ out/
 .vscode/
 
 .env
+/nginx/certs
+/nginx/log
