@@ -29,7 +29,7 @@ public class DBUtils {
                     .category("Достопримечательность")
                     .type("Памятник")
                     .description("Very interesting description")
-                    .creationYear(1706)
+                    .creationYear("1706")
                     .imageUrl("https://i.pinimg.com/736x/16/1e/3d/161e3d6e60b5e42ebca673b941eba662.jpg")
                     .build()
             );

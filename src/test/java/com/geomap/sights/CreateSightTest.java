@@ -51,7 +51,7 @@ public class CreateSightTest implements TestContainersConfig {
 
     final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-    final static String DEFAULT_URL = "/api/sights";
+    final static String DEFAULT_URL = "/sights";
 
     @Autowired
     DBUtils dbUtils;
@@ -84,7 +84,7 @@ public class CreateSightTest implements TestContainersConfig {
                 .category("Достопримечательность")
                 .type("Памятник")
                 .description("Very interesting description")
-                .creationYear(2025)
+                .creationYear("2025")
                 .imageUrl("https://i.pinimg.com/736x/16/1e/3d/161e3d6e60b5e42ebca673b941eba662.jpg")
                 .build();
         mvc.perform(
@@ -137,7 +137,7 @@ public class CreateSightTest implements TestContainersConfig {
                 .category("Достопримечательность")
                 .type("Памятник")
                 .description("Very interesting description")
-                .creationYear(2025)
+                .creationYear("2025")
                 .imageUrl("https://i.pinimg.com/736x/16/1e/3d/161e3d6e60b5e42ebca673b941eba662.jpg")
                 .build();
         mvc.perform(
@@ -166,7 +166,7 @@ public class CreateSightTest implements TestContainersConfig {
                 .category("Достопримечательность")
                 .type("Памятник")
                 .description("Very interesting description")
-                .creationYear(2025)
+                .creationYear("2025")
                 .imageUrl("https://i.pinimg.com/736x/16/1e/3d/161e3d6e60b5e42ebca673b941eba662.jpg")
                 .build();
         mvc.perform(

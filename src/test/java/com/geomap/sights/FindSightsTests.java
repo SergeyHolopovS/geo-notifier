@@ -49,7 +49,7 @@ public class FindSightsTests implements TestContainersConfig {
 
     final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-    final static String DEFAULT_URL = "/api/sights";
+    final static String DEFAULT_URL = "/sights";
 
     @Autowired
     DBUtils dbUtils;

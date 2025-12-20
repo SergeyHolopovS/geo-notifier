@@ -34,7 +34,7 @@ public class SightEntity {
 
     private String description;
 
-    private Integer creationYear;
+    private String creationYear;
 
     private String imageUrl;
 

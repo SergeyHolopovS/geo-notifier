@@ -26,7 +26,7 @@ public record CreateSightRequest (
     @NotBlank
     String description,
     @NotNull
-    Integer creationYear,
+    String creationYear,
     @NotBlank
     String imageUrl
 ) {
