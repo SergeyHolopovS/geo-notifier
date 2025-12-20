@@ -12,7 +12,7 @@ public record CreateSightRequest (
     @NotBlank
     String objectName,
     @NotNull
-    Integer registryNumber,
+    String registryNumber,
     @NotBlank
     String fullAddress,
     @NotNull

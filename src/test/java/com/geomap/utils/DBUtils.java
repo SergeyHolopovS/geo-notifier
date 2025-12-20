@@ -18,7 +18,7 @@ public class DBUtils {
             result.add(
                 SightEntity.builder()
                     .objectName("Object " + i)
-                    .registryNumber(i*100000)
+                    .registryNumber(String.valueOf(i*100000))
                     .fullAddress(i + " Lotsmanskay street c.Saint-Petersburg")
                     .cords(
                         new Coordinates(

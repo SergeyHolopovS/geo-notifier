@@ -75,7 +75,7 @@ public class CreateSightTest implements TestContainersConfig {
                 .builder()
                 .secret("1234567890")
                 .objectName("Some name")
-                .registryNumber(123456)
+                .registryNumber("123456")
                 .fullAddress("52 Lotsmanskay street St.Petersburg")
                 .cords(
                     new Coordinates(52.0, 52.0)
@@ -128,7 +128,7 @@ public class CreateSightTest implements TestContainersConfig {
                 .builder()
                 .secret("123")
                 .objectName("Some name")
-                .registryNumber(123456)
+                .registryNumber("123456")
                 .fullAddress("52 Lotsmanskay street St.Petersburg")
                 .cords(
                     new Coordinates(52.0, 52.0)
@@ -157,7 +157,7 @@ public class CreateSightTest implements TestContainersConfig {
         CreateSightRequest request = CreateSightRequest
                 .builder()
                 .objectName("Some name")
-                .registryNumber(123456)
+                .registryNumber("123456")
                 .fullAddress("52 Lotsmanskay street St.Petersburg")
                 .cords(
                     new Coordinates(52.0, 52.0)
