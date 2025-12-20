@@ -3,9 +3,14 @@ FROM nginx:alpine
 # Удаляем дефолтный конфиг
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Копируем наш конфиг
-COPY nginx.conf /etc/nginx/nginx.conf
+# Копируем nginx конфиг
+COPY conf.d/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Логи в stdout/stderr (лучше для Docker)
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+# Копируем SSL сертификаты
+COPY certs /etc/nginx/certs
+
+# Открываем порты
+EXPOSE 80 443
+
+# Запуск nginx
+CMD ["nginx", "-g", "daemon off;"]
